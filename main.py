@@ -30,6 +30,8 @@ MAX_CHARS = 140
 
 
 def validate(text: str) -> None:
+    # Repair revision: the checks below reject padded or double-spaced
+    # lines, so the printed entry is exactly the selected one-liner.
     body = text[:-1] if text.endswith("\n") else text
     if not (1 <= len(body) <= MAX_CHARS):
         raise ValueError("entry length out of range")
